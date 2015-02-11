@@ -2,13 +2,16 @@ var setRemainder = function( change, coinValue ) {
   return change % coinValue
 };
 
-var makeChange = function( change ) {
-  var coins =[ 25, 10, 5, 1 ]
+var makeChange = function( change, coins ) {
   var centsRemainder = change * 100
   return coins.map( function( coin ) {
-    var coinAmount =  ( Math.floor(centsRemainder / coin ));
-    centsRemainder = setRemainder( centsRemainder, coin );
-    return coinAmount;
+    if ( coin === 0 ) {
+      return 0;
+    } else {
+      var coinAmount =  ( Math.floor(centsRemainder / coin ));
+      centsRemainder = setRemainder( centsRemainder, coin );
+      return coinAmount;
+    }
   });
 };
 
@@ -42,3 +45,7 @@ var createChangeString = function(coinStrings) {
     return coinStrings.join(", ") + " and " + lastCoin;
   }
 };
+
+var currencies = {
+  us: [ [ ], [ ] ],
+}

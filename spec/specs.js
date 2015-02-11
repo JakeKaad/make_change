@@ -1,27 +1,35 @@
 describe("makeChange", function(){
 
   it("returns the array [ 0, 0, 0, 1 ] when the change is .01", function(){
-    expect(makeChange(0.01)).to.eql([0, 0, 0, 1]);
+    expect(makeChange(0.01, [ 25, 10, 5, 1 ])).to.eql([0, 0, 0, 1]);
   });
 
   it("returns appropriate array when given change of .04", function(){
-    expect(makeChange(0.04)).to.eql([0, 0, 0, 4]);
+    expect(makeChange(0.04, [ 25, 10, 5, 1 ])).to.eql([0, 0, 0, 4]);
   });
 
   it("returns an array with pennies and nickels", function(){
-    expect(makeChange(0.07)).to.eql([0, 0, 1, 2]);
+    expect(makeChange(0.07, [ 25, 10, 5, 1 ])).to.eql([0, 0, 1, 2]);
   });
 
   it("returns an array with pennies, nickels, and dimes", function(){
-    expect(makeChange(0.16)).to.eql([0, 1, 1, 1]);
+    expect(makeChange(0.16, [ 25, 10, 5, 1 ])).to.eql([0, 1, 1, 1]);
   });
 
   it("returns an array with pennies, nickels, dimes, and quarters", function(){
-    expect(makeChange(0.41)).to.eql([1, 1, 1, 1]);
+    expect(makeChange(0.41, [ 25, 10, 5, 1 ])).to.eql([1, 1, 1, 1]);
   });
 
   it("returns an array with pennies, nickels, dimes, and quarters", function(){
-    expect(makeChange(0.99)).to.eql([3, 2, 0, 4]);
+    expect(makeChange(0.99, [ 25, 10, 5, 1 ])).to.eql([3, 2, 0, 4]);
+  });
+
+  it("returns proper change given a coin shortage", function(){
+    expect(makeChange(0.99, [ 25, 0, 5, 1 ])).to.eql([3, 0, 4, 4]);
+  });
+
+  it("returns proper change non standard coins", function(){
+    expect(makeChange(0.99, [ 30, 10, 1 ])).to.eql([3, 0, 9]);
   });
 });
 
