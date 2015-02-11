@@ -1,0 +1,9 @@
+.results {
+  display: none;
+}
+.coins {
+  margin-top: -5000px;
+}
+#bank {
+  background-color: white;
+}
