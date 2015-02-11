@@ -24,3 +24,32 @@ describe("makeChange", function(){
     expect(makeChange(0.99)).to.eql([3, 2, 0, 4]);
   });
 });
+
+
+describe("coinString", function(){
+
+  it("returns a singular string when its 1 penny", function(){
+    expect(coinString([0, 0, 0, 1])).to.equal("1 penny");
+  });
+
+  it("returns a plural string when its 2 pennies", function(){
+    expect(coinString([0, 0, 0, 2])).to.equal("2 pennies");
+  });
+
+  it("returns a string representing nickels and pennies", function(){
+    expect(coinString([0, 0, 1, 2])).to.equal("1 nickel and 2 pennies");
+  });
+
+  it("returns a string representing dimes, nickels and pennies", function(){
+    expect(coinString([0, 2, 1, 2])).to.equal("2 dimes, 1 nickel and 2 pennies");
+  });
+
+  it("returns a string even when none of some coins are needed", function(){
+    expect(coinString([3, 0, 1, 0])).to.equal("3 quarters and 1 nickel");
+  });
+
+  it("returns a string for an only quarters situation", function(){
+    expect(coinString([3, 0, 0, 0])).to.equal("3 quarters");
+  });
+
+});
