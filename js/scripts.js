@@ -49,7 +49,6 @@ var createChangeString = function(coinStrings) {
 $(function(){
   $("#change_maker").submit(function(event){
     $('.results').fadeOut("fast");
-    // $(".coins").animate( {margin: "-5000px 0px 0px 0px"}, "slow" );
     $(".coins").remove();
 
     var coins = [0, 0, 0, 0];
